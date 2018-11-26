@@ -1,6 +1,6 @@
 # gosmart
-[![Go Report Card](https://goreportcard.com/badge/github.com/marcopaganini/gosmart)](https://goreportcard.com/report/github.com/marcopaganini/gosmart)
-[![GoDoc](https://godoc.org/github.com/marcopaganini/gosmart?status.svg)](https://godoc.org/github.com/marcopaganini/gosmart)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kadaan/gosmart)](https://goreportcard.com/report/github.com/kadaan/gosmart)
+[![GoDoc](https://godoc.org/github.com/kadaan/gosmart?status.svg)](https://godoc.org/github.com/kadaan/gosmart)
 
 A Go (golang) library to interface with the Samsung SmartThings (IoT) API.
 
@@ -33,9 +33,9 @@ variables.
 
 First, grab the latest version of gosmart with:
 
-    go get -u -v github.com/marcopaganini/gosmart
+    go get -u -v github.com/kadaan/gosmart
 
-This will install the package under `$GOPATH/src/github.com/marcopaganini/gosmart`
+This will install the package under `$GOPATH/src/github.com/kadaan/gosmart`
 
 Change to that directory and locate the `endpoint.groovy` file under the `apismartapp`
 directory. We'll need this file momentarily.
