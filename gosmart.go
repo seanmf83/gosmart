@@ -98,14 +98,21 @@ func NewAuth(port int, config *oauth2.Config) (*Auth, error) {
 // FetchOAuthToken sets up the handler and a local HTTP server and fetches an
 // Oauth token from the smartthings website.
 func (g *Auth) FetchOAuthToken() (*oauth2.Token, error) {
-	http.HandleFunc(rootPath, g.handleMain)
-	http.HandleFunc(donePath, g.handleDone)
-	http.HandleFunc(callbackPath, g.handleOAuthCallback)
+	mux := http.NewServeMux()
+	mux.HandleFunc(rootPath, g.handleMain)
+	mux.HandleFunc(donePath, g.handleDone)
+	mux.HandleFunc(callbackPath, g.handleOAuthCallback)
+	srv := &http.Server {
+		Addr: ":"+strconv.Itoa(g.port),
+		Handler: mux,
+	}
 
-	go http.ListenAndServe(":"+strconv.Itoa(g.port), nil)
+	go srv.ListenAndServe()
 
 	// Block on the return channel (this is set by handleOauthCallback)
 	ret := <-g.rchan
+	time.Sleep(3 * time.Second)
+	srv.Close()
 	return ret.token, ret.err
 }
 
