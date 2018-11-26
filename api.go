@@ -33,8 +33,8 @@ type DeviceCommand struct {
 
 // GetDevices returns the list of devices from smartthings using
 // the specified http.client and endpoint URI.
-func GetDevices(client *http.Client, endpoint string) ([]DeviceList, error) {
-	ret := []DeviceList{}
+func GetDevices(client *http.Client, endpoint string) ([]DeviceInfo, error) {
+	ret := []DeviceInfo{}
 
 	contents, err := issueCommand(client, endpoint, "/devices")
 	if err != nil {
